@@ -102,6 +102,13 @@
 
         //スーパークラスのメソッドも利用できる
         document.body.insertAdjacentHTML("beforeend", maker.descript());
+
+        const maker2 = new Maker("マルちゃん正麺", "しょうゆ", "東洋水産");
+
+        //サブクラスのメソッド
+        document.body.insertAdjacentHTML("beforeend", maker2.makerDescript());
+
+        console.dir(document.body);
     </script>
 </body>
 
