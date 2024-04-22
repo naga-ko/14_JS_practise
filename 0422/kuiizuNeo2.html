@@ -1,0 +1,35 @@
+form.html
+<div class="wrapper">
+    <h1>申し込みフォーム</h1>
+    <form>
+        <label for="yourN">氏名：<input type="text" value="十来 電人" id="yourN"></label>
+        <label for="schoolN">学校名：<input type="text" value="トライデントコンピュータ専門学校" id="schoolN"></label>
+        <label for="telN">電話番号：<input type="tel" value="052-581-0581" id="telN"></label>
+        <button type="button">送信</button>
+    </form>
+    <h2>結果</h2>
+    <div class="result"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    const Youname = document.querySelector("#yourN");
+    const Schoolname = document.querySelector("#schoolN");
+    const tel = document.querySelector("#telN");
+    const Btn = document.querySelector("button");
+    const Result = document.querySelector(".result");
+    const ulElm = document.createElement("ul");
+    Btn.addEventListener("click", function () {
+        ulElm.innerHTML = "";
+        const value = [Youname.value, Schoolname.value, tel.value];
+        for (let i = 0; i < 3; i++) {
+            const liElm = document.createElement("li");
+            liElm.textContent = value[i];
+            ulElm.appendChild(liElm);
+        }
+        Result.appendChild(ulElm);
+    });
+</script>
+</body>
+
+</html>
