@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //東海4県のコード番号をオブジェクトの配列にしておきます。
+        const codeNums = [{ 愛知県: 230000 }, { 岐阜県: 210000 }, { 三重県: 240000 }, { 静岡県: 220000 }];
+
+        //テンプレートリテラルでconst urlに代入します。
+        const url = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${codeNums[0]["愛知県"]}.json`;
+
+        //fetch()でデータを取得する。
+        fetch(url)
+            .then(function (response) {
+                if (response.status !== 200) {
+                    console.log("問題がありました。ステータスコード:" + response.status);
+                    return;
+                }
+                // responseのテキストを調べる
+                response.json().then(function (weather) {
+                    console.log(weather);
+                    const result = document.querySelector(".target");
+                    const ulElm = document.createElement("ul");
+                    for (const key in weather) {
+                        ulElm.insertAdjacentHTML("beforeend", `<li>${weather[key]}</li>`);
+                    }
+                    result.append(ulElm);
+                });
+            })
+            .catch(function (err) {
+                console.log("Fetchエラー:", err);
+            });
+
+        const weekUrl = `https://www.jma.go.jp/bosai/forecast/data/forecast/${codeNums[0]["愛知県"]}.json`;
+
+        fetch(weekUrl)
+            .then((response) => {
+                if (response.status !== 200) {
+                    console.log("問題がありました。Status Code:" + response.status);
+                    return;
+                }
+                response.json().then((data) => {
+                    console.log(data);
+                });
+            })
+            .catch((err) => {
+                console.log("Fetch Error:", err);
+            });
+    </script>
+</body>
+
+</html>

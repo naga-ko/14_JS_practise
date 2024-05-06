@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>三国志（オブジェクトの操作）</title>
+</head>
+
+<body>
+    <h1>三国志武将</h1>
+    <button class="gi">魏</button>
+    <button class="go">呉</button>
+    <button class="shoku">蜀</button>
+    <ul class="result">
+        <!-- ここに表示させます。 -->
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        const threeKingdoms = [
+            {
+                name: "魏",
+                king: "曹操",
+                generals: ["張遼", "司馬懿", "夏侯惇", "郭嘉", "夏侯淵"],
+            },
+            {
+                name: "呉",
+                king: "孫堅",
+                generals: ["周瑜", "太史慈", "魯粛", "甘寧", "陸遜"],
+            },
+            {
+                name: "蜀",
+                king: "劉備",
+                generals: ["関羽", "張飛", "趙雲", "諸葛亮", "姜維"],
+            },
+        ];
+    </script>
+    <script>
+        const Gi = document.querySelector(".gi");
+        const Go = document.querySelector(".go");
+        const Shoku = document.querySelector(".shoku");
+        const Result = document.querySelector(".result");
+
+        Gi.addEventListener("click", function () {
+            Result.innerHTML = "";
+
+            const sangoku = threeKingdoms.find(kingdom => kingdom.name === "魏").generals;
+
+            for (let i = 0; i < sangoku.length; i++) {
+                const listItem = document.createElement("li");
+                listItem.textContent = sangoku[i];
+                Result.appendChild(listItem);
+            }
+        });
+        Go.addEventListener("click", function () {
+            Result.innerHTML = "";
+
+            const sangoku = threeKingdoms.find(kingdom => kingdom.name === "呉").generals;
+
+            for (let i = 0; i < sangoku.length; i++) {
+                const listItem = document.createElement("li");
+                listItem.textContent = sangoku[i];
+                Result.appendChild(listItem);
+            }
+        });
+        Shoku.addEventListener("click", function () {
+            Result.innerHTML = "";
+
+            const sangoku = threeKingdoms.find(kingdom => kingdom.name === "蜀").generals;
+
+            for (let i = 0; i < sangoku.length; i++) {
+                const listItem = document.createElement("li");
+                listItem.textContent = sangoku[i];
+                Result.appendChild(listItem);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
