@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>JSクイズ④</title>
+</head>
+
+<body>
+    <form>
+        <label for="postal-code">〒 <input type="text" name="postal-code" id="postal-code" value="4500002" /></label>
+        <button type="button">住所表示</button>
+    </form>
+    <div class="result">
+        <dl>
+            <dt>住所</dt>
+            <dd></dd>
+        </dl>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    const Btn = document.querySelector("button");
+    Btn.addEventListener("click", function () {
+        const codeNums = document.forms.value;
+        console.log(codeNums);
+        const url = `http://zipcloud.ibsnet.co.jp/doc/api/search?zipcode=${codeNums}`;
+        fetch(url)
+            .then(function (response) {
+                response.json().then(function (weather) {
+                    console.log(weather);
+                    const result = document.querySelector(".result");
+                    const dlElm = document.createElement("dl");
+                    dlElm.insertAdjacentHTML("beforeend", `<dd>${weather}</dd>`);
+                    result.append(dlElm);
+                });
+            })
+            .catch(function (err) {
+                console.log("Fetchエラー:", err);
+            });
+    });
+</script>
+
+</html>

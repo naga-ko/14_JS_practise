@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天気予報API</title>
+    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <head class="header">
+        <h1 class="header__title">天気予報</h1>
+    </head>
+    <main class="main">
+        <div class="card__list">
+            <div class="card card__1">
+                <div class="card__suu"></div>
+                <div class="card__text"></div>
+                <form class="card__form">
+                    <label for="weather_code">県名を入力 </label>
+                    <!-- <input type="text" name="weather_code" id="weather_code" value="" /> -->
+                    <select name="weather_code" id="weather_code">
+                        <option value="" disabled selected>都道府県を選択してください</option>
+                        <option value="110000">北海道</option>
+                        <option value="200000">青森県</option>
+                        <option value="300000">岩手県</option>
+                        <option value="400000">宮城県</option>
+                        <option value="500000">秋田県</option>
+                        <option value="600000">山形県</option>
+                        <option value="700000">福島県</option>
+                        <option value="800000">茨城県</option>
+                        <option value="900000">栃木県</option>
+                        <option value="1000000">群馬県</option>
+                        <option value="1100000">埼玉県</option>
+                        <option value="1200000">千葉県</option>
+                        <option value="1300000">東京都</option>
+                        <option value="1400000">神奈川県</option>
+                        <option value="1500000">新潟県</option>
+                        <option value="1600000">富山県</option>
+                        <option value="1700000">石川県</option>
+                        <option value="1800000">福井県</option>
+                        <option value="1900000">山梨県</option>
+                        <option value="2000000">長野県</option>
+                        <option value="2100000">岐阜県</option>
+                        <option value="2200000">静岡県</option>
+                        <option value="2300000">愛知県</option>
+                        <option value="2400000">三重県</option>
+                        <option value="2500000">滋賀県</option>
+                        <option value="2600000">京都府</option>
+                        <option value="2700000">大阪府</option>
+                        <option value="2800000">兵庫県</option>
+                        <option value="2900000">奈良県</option>
+                        <option value="3000000">和歌山県</option>
+                        <option value="3100000">鳥取県</option>
+                        <option value="3200000">島根県</option>
+                        <option value="3300000">岡山県</option>
+                        <option value="3400000">広島県</option>
+                        <option value="3500000">山口県</option>
+                        <option value="3600000">徳島県</option>
+                        <option value="3700000">香川県</option>
+                        <option value="3800000">愛媛県</option>
+                        <option value="3900000">高知県</option>
+                        <option value="4000000">福岡県</option>
+                        <option value="4100000">佐賀県</option>
+                        <option value="4200000">長崎県</option>
+                        <option value="4300000">熊本県</option>
+                        <option value="4400000">大分県</option>
+                        <option value="4500000">宮崎県</option>
+                        <option value="4600000">鹿児島県</option>
+                        <option value="4700000">沖縄県</option>
+                    </select>
+                </form>
+            </div>
+            <button class="weather_Btn" type="button">確定</button>
+            <div class="card card__2">
+                <div class="card__suu"></div>
+                <div class="card__text"></div>
+                <form class="card__form card__form2">
+                    <label for="weather_code">県名を入力 </label>
+                    <!-- <input type="text" name="weather_code" id="weather_code" value="" /> -->
+                    <select name="weather_code2" id="weather_code2">
+                        <option value="" disabled selected>都道府県を選択してください</option>
+                        <option value="110000">北海道</option>
+                        <option value="200000">青森県</option>
+                        <option value="300000">岩手県</option>
+                        <option value="400000">宮城県</option>
+                        <option value="500000">秋田県</option>
+                        <option value="600000">山形県</option>
+                        <option value="700000">福島県</option>
+                        <option value="800000">茨城県</option>
+                        <option value="900000">栃木県</option>
+                        <option value="1000000">群馬県</option>
+                        <option value="1100000">埼玉県</option>
+                        <option value="1200000">千葉県</option>
+                        <option value="1300000">東京都</option>
+                        <option value="1400000">神奈川県</option>
+                        <option value="1500000">新潟県</option>
+                        <option value="1600000">富山県</option>
+                        <option value="1700000">石川県</option>
+                        <option value="1800000">福井県</option>
+                        <option value="1900000">山梨県</option>
+                        <option value="2000000">長野県</option>
+                        <option value="2100000">岐阜県</option>
+                        <option value="2200000">静岡県</option>
+                        <option value="2300000">愛知県</option>
+                        <option value="2400000">三重県</option>
+                        <option value="2500000">滋賀県</option>
+                        <option value="2600000">京都府</option>
+                        <option value="2700000">大阪府</option>
+                        <option value="2800000">兵庫県</option>
+                        <option value="2900000">奈良県</option>
+                        <option value="3000000">和歌山県</option>
+                        <option value="3100000">鳥取県</option>
+                        <option value="3200000">島根県</option>
+                        <option value="3300000">岡山県</option>
+                        <option value="3400000">広島県</option>
+                        <option value="3500000">山口県</option>
+                        <option value="3600000">徳島県</option>
+                        <option value="3700000">香川県</option>
+                        <option value="3800000">愛媛県</option>
+                        <option value="3900000">高知県</option>
+                        <option value="4000000">福岡県</option>
+                        <option value="4100000">佐賀県</option>
+                        <option value="4200000">長崎県</option>
+                        <option value="4300000">熊本県</option>
+                        <option value="4400000">大分県</option>
+                        <option value="4500000">宮崎県</option>
+                        <option value="4600000">鹿児島県</option>
+                        <option value="4700000">沖縄県</option>
+                    </select>
+                </form>
+                <button class="kirikae">切り替え</button>
+                <p class="randam"></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="./weathercodes.js"></script>
+    <script src="./ken.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
