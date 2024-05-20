@@ -1,4 +1,5 @@
 const Btn = document.querySelector(".weather_Btn");
+const j = 0;
 Btn.addEventListener("click", function () {
 
     const select = document.getElementById("weather_code");
@@ -13,30 +14,9 @@ Btn.addEventListener("click", function () {
     const selectedPrefecture = selectedOption.text; //北海道
     const selectedCode = selectedOption.value; //110000
 
+
     console.log(`選択された都道府県: ${selectedPrefecture}`);
     console.log(`選択された都道府県のコード: ${selectedCode}`);
-
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const url = `${proxyUrl}https://www.jma.go.jp/bosai/forecast/data/forecast/${selectedCode}.json`;
-
-    fetch(url)
-        .then(function (response) {
-            response.json().then(function (weather) {
-                console.log(weather);
-                const result = document.querySelector(".target");
-                const ulElm = document.createElement("ul");
-                for (const key in weather) {
-                    ulElm.insertAdjacentHTML("beforeend", `<li>${weather[key]}</li>`);
-                }
-                result.append(ulElm);
-            });
-        })
-        .catch(function (err) {
-            console.log("Fetchエラー:", err);
-        });
-
-
-    /////////////////////////////////////////////////////////////////
 
     const select2 = document.getElementById("weather_code2");
     const selectedIndex2 = select2.selectedIndex;
@@ -53,16 +33,106 @@ Btn.addEventListener("click", function () {
     console.log(`選択された都道府県: ${selectedPrefecture2}`);
     console.log(`選択された都道府県のコード: ${selectedCode2}`);
 
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const url = `https://www.jma.go.jp/bosai/forecast/data/forecast/${selectedCode}.json`;
+    const url2 = `https://www.jma.go.jp/bosai/forecast/data/forecast/${selectedCode2}.json`;
+
+    const card__back = document.querySelector(".card__back");
+    card__back.style.opacity = "0";
+
+    const card__back2 = document.querySelector(".card__back2");
+    card__back2.style.opacity = "0";
+
     fetch(url)
         .then(function (response) {
-            response.json().then(function (weather) {
-                console.log(weather);
-                const result = document.querySelector(".target");
-                const ulElm = document.createElement("ul");
-                for (const key in weather) {
-                    ulElm.insertAdjacentHTML("beforeend", `<li>${weather[key]}</li>`);
-                }
-                result.append(ulElm);
+            response.json().then(function (data) {
+                const code = data[0].timeSeries[0].areas[0].weatherCodes[0];
+                //console.log(`"${code}"`);
+                //console.log(weathercode[code][4]);
+                const Card__suu = document.querySelector(".card__suu");
+                const text = document.querySelector(".card__text");
+                const Card__suu__ja = document.querySelector(".card__suu__ja");
+                text.innerHTML = weathercode[code][4].length;
+                Card__suu__ja.innerHTML = weathercode[code][3];
+                Card__suu.innerHTML = weathercode[code][4];
+
+                const card__tenki = document.querySelector(".card__tenki");
+                const image = document.createElement("img");
+                console.log(weathercode[code][0]);
+                image.src = `https://www.jma.go.jp/bosai/forecast/img/${weathercode[code][0]}`;
+                card__tenki.insertBefore(image, null);
+
+                const card__tenki__bottom = document.querySelector(".card__tenki__bottom");
+                const image__bottom = document.createElement("img");
+                console.log(weathercode[code][0]);
+                image__bottom.src = `https://www.jma.go.jp/bosai/forecast/img/${weathercode[code][0]}`;
+                card__tenki__bottom.insertBefore(image__bottom, null);
+
+                fetch(url2)
+                    .then(function (response) {
+                        response.json().then(function (data2) {
+                            const code2 = data2[0].timeSeries[0].areas[0].weatherCodes[0];
+                            if (weathercode[code][4].length > weathercode[code2][4].length) {
+                                const win__or__lose = document.querySelector(".win__or__lose");
+                                const win__or__lose2 = document.querySelector(".win__or__lose2");
+                                win__or__lose.innerHTML = "WIN";
+                                win__or__lose.style.color = "#ff0000"
+                                win__or__lose2.innerHTML = "LOSE";
+                                win__or__lose2.style.color = "#0000ff"
+                            } else if (weathercode[code][4].length < weathercode[code2][4].length) {
+                                const win__or__lose = document.querySelector(".win__or__lose");
+                                const win__or__lose2 = document.querySelector(".win__or__lose2");
+                                win__or__lose.innerHTML = "LOSE";
+                                win__or__lose.style.color = "#0000ff"
+                                win__or__lose2.innerHTML = "WIN";
+                                win__or__lose2.style.color = "#ff0000";
+                            } else if (weathercode[code][4].length = weathercode[code2][4].length) {
+                                const win__or__lose = document.querySelector(".win__or__lose");
+                                const win__or__lose2 = document.querySelector(".win__or__lose2");
+                                win__or__lose.innerHTML = "DRAW";
+                                win__or__lose.style.color = "#5c5c5c"
+                                win__or__lose2.innerHTML = "DRAW";
+                                win__or__lose2.style.color = "#5c5c5c";
+                            }
+                        });
+                    })
+                    .catch(function (err) {
+                        console.log("Fetchエラー:", err);
+                    });
+            });
+
+        })
+        .catch(function (err) {
+            console.log("Fetchエラー:", err);
+        });
+
+
+    /////////////////////////////////////////////////////////////////
+
+    fetch(url2)
+        .then(function (response) {
+            response.json().then(function (data2) {
+                const code2 = data2[0].timeSeries[0].areas[0].weatherCodes[0];
+                //console.log(`"${code2}"`);
+                //console.log(weathercode[code2][4]);
+                const Card__suu2 = document.querySelector(".card__suu2");
+                const text2 = document.querySelector(".card__text2");
+                const Card__suu2__ja = document.querySelector(".card__suu2__ja");
+                text2.innerHTML = weathercode[code2][4].length;
+                Card__suu2__ja.innerHTML = weathercode[code2][3];
+                Card__suu2.innerHTML = weathercode[code2][4];
+
+                const card__tenki2 = document.querySelector(".card__tenki2");
+                const image2 = document.createElement("img");
+                console.log(weathercode[code2][0]);
+                image2.src = `https://www.jma.go.jp/bosai/forecast/img/${weathercode[code2][0]}`;
+                card__tenki2.appendChild(image2);
+
+                const card__tenki2__bottom = document.querySelector(".card__tenki2__bottom");
+                const image2__bottom = document.createElement("img");
+                console.log(weathercode[code2][0]);
+                image2__bottom.src = `https://www.jma.go.jp/bosai/forecast/img/${weathercode[code2][0]}`;
+                card__tenki2__bottom.appendChild(image2__bottom);
             });
         })
         .catch(function (err) {
