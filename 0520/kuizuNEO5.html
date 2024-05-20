@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSクイズNEO⑤</title>
+</head>
+
+<body>
+    <h1 class="getRank">ビジュアル女王</h1>
+    <div class="result"></div>
+
+    <h1 class="getMember">I-LAND</h1>
+    <ul class="member"></ul>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        const iland2 = {
+            "I-LAND": ["キム・スジョン", "ナム・ユジュ", "リンリン", "マイ", "パン・ジミン", "ユ・サラン", "ユイ", "ユン・ジユン", "チョン・セビ", "チェ・ジョンウン", "ココ", "フウコ"],
+            "GROUND": ["キム・ギュリ", "キム・ミンソル", "キム・チェウン", "パク・イェウン", "ソン・ジュウォン", "オム・ジウォン", "オ・ユナ", "チェ・ソウル",],
+            "LOSE": ["カン・ジウォン", "キム・ウンチェ", "ナナ", "ユイコ"]
+        }
+    </script>
+    <script>
+        const jououBtn = document.querySelector(".getRank");
+        jououBtn.addEventListener("click", function () {
+            const Result = document.querySelector(".result");
+            Result.innerHTML = `投票の結果選ばれたのは、${iland2["I-LAND"][3]}です。`;
+        })
+        const memberBtn = document.querySelector(".getMember");
+        memberBtn.addEventListener("click", function () {
+            const Member = document.querySelector(".member");
+            for (i = 0; i < iland2["I-LAND"].length; i++) {
+                const liElm = document.createElement("li");
+                liElm.textContent = iland2["I-LAND"][i];
+                Member.appendChild(liElm);
+            }
+        })
+    </script>
+</body>
+
+</html>
