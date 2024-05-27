@@ -1,15 +1,33 @@
+body {
+  background-image: url(../images/midori.png);
+}
+
 .header__title {
   text-align: center;
   margin: 50px auto;
+  text-shadow: #fff 1px 1px;
 }
 
 .main .vs {
+  position: relative;
   font-size: 30px;
+  color: #fff;
+}
+.main .vs .v {
+  top: -4px;
+  left: -20px;
+  position: absolute;
+}
+.main .vs .s {
+  top: 4px;
+  left: 0px;
+  position: absolute;
 }
 .main .card {
   position: relative;
   width: 300px;
   height: 400px;
+  background-color: #fff;
   border: 1px solid #000;
   border-radius: 9px;
 }
@@ -48,6 +66,9 @@
 .main .card__form {
   position: absolute;
   bottom: -60px;
+}
+.main .card__form label {
+  color: #fff;
 }
 .main .card .kirikae {
   opacity: 0;
@@ -138,7 +159,17 @@
 .main .weather_Btn {
   position: absolute;
   bottom: -60px;
+  font-size: 20px;
   left: 50%;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  z-index: 30;
+}
+.main .weather_Btn__ri {
+  position: absolute;
+  bottom: -140px;
+  left: 50%;
+  border-radius: 5px;
   transform: translateX(-50%);
 }
 /*# sourceMappingURL=style.css.map */
