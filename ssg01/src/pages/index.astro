@@ -6,8 +6,8 @@ const workPages = await getCollection('works');
 ---
 
 <Layout title="トップページ" description="このWebサイトは、Webデザイナーになるためのポートフォリオサイトです">
-<main>
-{workPages.map(productPage => (<Card title={productPage.data.title} href=`/works/${productPage.slug}` thumbnail={productPage.data.thumbnail} body={productPage.data.description} />
-))}
-</main>
+	<main>
+		{workPages.map(productPage => (<Card title={productPage.data.title} href=`/works/${productPage.slug}` thumbnail={productPage.data.thumbnail} body={productPage.data.description} />
+		))}
+	</main>
 </Layout>
