@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>ILLIT</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        body {
+            background-color: rgb(220 180 249);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .reflect {
+            display: flex;
+            column-gap: 1rem;
+            justify-content: space-between;
+            list-style: none;
+            margin-inline: auto;
+            padding: 0;
+            width: 50%;
+        }
+
+        .photo {
+            width: 50%;
+            aspect-ratio: 1 / 1;
+            margin: auto;
+            background-image: url("https://image.weversejapan.com/official/live/illit/images/logo.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .photo p {
+            margin: 0.5rem 0 0 0.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="reflect">
+        <li>
+            <img src="https://image.weversejapan.com/official/live/illit/contents/profile/2/f94b2aba392040128019b5a20bdd720e.jpg"
+                alt="YUNAH" />
+        </li>
+        <li>
+            <img src="https://image.weversejapan.com/official/live/illit/contents/profile/2/07ab8324d9994ca8a10ca17caa218650.jpg"
+                alt="MINJU" />
+        </li>
+        <li>
+            <img src="https://image.weversejapan.com/official/live/illit/contents/profile/2/a6b1a01bbfc14460ad9b07037b474596.jpg"
+                alt="MOKA" />
+        </li>
+        <li>
+            <img src="https://image.weversejapan.com/official/live/illit/contents/profile/2/a625b048eaba48748693f43313264031.jpg"
+                alt="WONHEE" />
+        </li>
+        <li>
+            <img src="https://image.weversejapan.com/official/live/illit/contents/profile/2/beff87be626d4610b89434110d54936e.jpg"
+                alt="IROHA" />
+        </li>
+    </ul>
+    <div class="photo">
+        <p></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        const reflectImg = document.querySelectorAll(".reflect img");
+        function clickPhoto() {
+            for (const image of reflectImg) {
+                image.addEventListener("click", function () {
+                    const area = document.querySelector(".photo");
+                    const member = document.querySelector(".photo p");
+                    area.style.backgroundImage = `url(${image.getAttribute("src")})`;
+                    member.innerHTML = image.getAttribute("alt");
+                });
+            }
+        }
+
+        clickPhoto();
+
+    </script>
+</body>
+
+</html>
