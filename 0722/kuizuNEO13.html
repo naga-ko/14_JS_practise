@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>クイズ0720</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #e0f7fa;
+        }
+
+        time {
+            color: #00796b;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #00796b;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e0f7fa;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>キャラクターをクリック</h1>
+    <ul class="characterList">
+        <li><time datetime="2024-09-14">磯野 波平</time></li>
+        <li><time datetime="2024-01-11">磯野 舟</time></li>
+        <li><time datetime="2024-11-24">フグ田 サザエ</time></li>
+        <li><time datetime="2024-03-11">磯野 カツオ</time></li>
+        <li><time datetime="2024-06-15">磯野 ワカメ</time></li>
+        <li><time datetime="2024-03-18">フグ田 タラオ</time></li>
+        <li><time datetime="2024-04-03">フグ田 マスオ</time></li>
+    </ul>
+    <div class="output"></div>
+    <script>
+        const charactorList = document.querySelectorAll(".characterList li");
+        let isVirgo;
+
+        // for (let i = 0; i < charactorList.length; i++) {
+        //     charactorList[i].addEventListener("click", function () {
+        //         const datetime = this.querySelector("time").getAttribute("datetime");
+        //         const date = new Date(datetime);
+
+        //         checkVirgo(date);
+
+        //         let message = this.textContent;
+        //         if (isVirgo) {
+        //             message += " は乙女座です";
+        //         } else {
+        //             message += " は乙女座ではありません";
+        //         }
+
+        //         document.querySelector(".output").textContent = message;
+        //     });
+        // }
+
+        // function checkVirgo(date) {
+        //     const virgoStart = new Date(date.getFullYear(), 7, 23);
+        //     const virgoEnd = new Date(date.getFullYear(), 8, 22);
+        //     isVirgo = date >= virgoStart && date <= virgoEnd;
+        // }
+
+        for (let i = 0; i < charactorList.length; i++) {
+            charactorList[i].addEventListener("click", function () {
+                const datetime = this.querySelector("time").getAttribute("datetime");
+                const date = new Date(datetime);
+
+                checkSagittarius(date);
+
+                let message = this.textContent;
+                if (isVirgo) {
+                    message += " は蠍座座です";
+                } else {
+                    message += " は蠍座座ではありません";
+                }
+
+                document.querySelector(".output").textContent = message;
+            });
+        }
+
+        function checkSagittarius(date) {
+            const virgoStart = new Date(date.getFullYear(), 10, 24);
+            const virgoEnd = new Date(date.getFullYear(), 11, 22);
+            isVirgo = date >= virgoStart && date <= virgoEnd;
+        }
+
+    </script>
+</body>
+
+</html>
