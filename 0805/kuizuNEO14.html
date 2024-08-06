@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-POP 曲リスト</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0;
+            width: 80%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .buttons {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .songs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .songs li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .songs li.hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>J-POP 曲リスト</h1>
+    <div class="buttons">
+        <button id="1980">1980年代</button>
+        <button id="1990">1990年代</button>
+        <button id="2000">2000年代</button>
+        <button id="2010">2010年代</button>
+        <button id="2020">2020年代</button>
+        <button id="all">全て</button>
+    </div>
+    <ul class="songs">
+        <li class="1980">異邦人 ／ 久保田早紀</li>
+        <li class="1980">ルビーの指環 ／ 寺尾聰</li>
+        <li class="1980">恋人よ ／ 五輪真弓</li>
+        <li class="1990">ラブ・ストーリーは突然に ／ 小田和正</li>
+        <li class="1990">愛は勝つ ／ KAN</li>
+        <li class="1990">何も言えなくて…夏 ／ JAYWALK</li>
+        <li class="1990">Automatic ／ 宇多田ヒカル</li>
+        <li class="2000">世界に一つだけの花 ／ SMAP</li>
+        <li class="2000">TSUNAMI ／ サザンオールスターズ</li>
+        <li class="2010">恋 ／ 星野源</li>
+        <li class="2010">Lemon ／ 米津玄師</li>
+        <li class="2010">Pretender ／ Official髭男dism</li>
+        <li class="2010">アイネクライネ ／ 米津玄師</li>
+        <li class="2020">夜に駆ける ／ YOASOBI</li>
+        <li class="2020">Dynamite ／ BTS</li>
+    </ul>
+
+    <script>
+        // 指定された年代の曲を表示する関数
+        function showSongs(decade) {
+            const songs = document.querySelectorAll('.songs li');
+            songs.forEach(song => {
+                if (decade === 'all') {
+                    song.classList.remove('hide');
+                } else {
+                    if (song.classList.contains(decade)) {
+                        song.classList.remove('hide');
+                    } else {
+                        song.classList.add('hide');
+                    }
+                }
+            });
+        }
+        // ①ボタンを取得
+        const buttons = document.querySelectorAll('.buttons button');
+
+        // ②各ボタンにクリックイベントを設定する
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                const decade = buttons[i].id;
+                showSongs(decade);
+            });
+        }
+    </script>
+</body>
+
+</html>
